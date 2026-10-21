@@ -78,6 +78,12 @@ on infrastructure you own or are authorised to monitor, and check the rules that
 (data protection, monitoring of employees) before you do. Tapster collects; what you do with
 the data is your responsibility.
 
+## Contributing and security
+
+Tapster does not accept outside contributions; bug reports are welcome as issues (see
+[CONTRIBUTING.md](CONTRIBUTING.md)). Report vulnerabilities privately, as described in
+[SECURITY.md](SECURITY.md).
+
 ## License
 
 [PolyForm Noncommercial 1.0.0](LICENSE.md). You may use, change and share Tapster for any
