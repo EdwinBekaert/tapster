@@ -1,7 +1,25 @@
 # Tapster
 
-A passive network sensor written in C#. Tapster reads network traffic, works out which
-devices are on the network and what they are, and records who depends on whom.
+**A demonstration project about high-performance processing in C#.** Tapster is part of Edwin
+Bekaert's portfolio: it shows how to design and build software that handles millions of events
+per second without slowing the system it runs in. It is not a product.
+
+The problem it works on is real: a passive network sensor. Tapster reads network traffic, works
+out which devices are on the network and what they are, and records who depends on whom.
+
+## What it demonstrates
+
+| Technique | Where |
+|---|---|
+| Zero-allocation processing with `Span<T>` and `ref struct` views over memory owned by someone else | [Parsing](docs/parsing.md) |
+| Bounded memory under hostile input: fixed pools, drop and count, never wait | [Building blocks](docs/building-blocks.md) |
+| Lock-free hand-off between threads: single-producer, single-consumer rings, one owner per structure | [Architecture](docs/architecture.md#threading) |
+| Reassembling and reordering data that arrives split and out of order, without slowing the common case | [Reassembly](docs/reassembly.md) |
+| A C# core embedded in native software through NativeAOT and a C API | [Architecture](docs/architecture.md#embedded) |
+| A pure core with thin shells, so one engine serves three very different deployments | [Architecture](docs/architecture.md) |
+| Event-sourced state: facts in an append-only log, conclusions as a fold | [Deployment and outputs](docs/deployment-and-outputs.md) |
+| Modelling a messy domain precisely: identity across VLANs, routing domains and rotating MAC addresses | [Identity model](docs/identity-model.md) |
+| Decisions written down with their alternatives | [Decision records](docs/adr/README.md) |
 
 It is built for places where every packet passes by: inside a router or other network
 device, on a server that receives a switch's mirrored traffic, or on a single machine.
