@@ -5,6 +5,7 @@
 | **Arena** | One pinned block of memory per tap, cut into fixed-size chunks, holding bytes kept past a call. |
 | **Binding** | A MAC↔IP pair within a routing domain, valid for a time range. Learned only from ARP, ND and DHCP. |
 | **Configured edge** | A dependency the client was told about (for example by DHCP), whether or not it is used. |
+| **Conflict** | Two facts that cannot both be true (two MACs claiming one IP at once). Kept and reported, never resolved silently. |
 | **Consumer** | One of the three ways Tapster is deployed: embedded, forwarded traffic, single device. |
 | **Copy-out boundary** | The point where values are copied from the caller's buffer into observations. Above it, views; below it, owned values. |
 | **Core** | The I/O-free part that turns a frame and its context into observations. Shared by all consumers. |
@@ -12,6 +13,7 @@
 | **Edge** | A client → server relation for one service, between interfaces or bindings. |
 | **ERSPAN** | Encapsulated remote mirroring: a switch sends copies of traffic inside GRE to a collector. |
 | **Evidence log** | The per-interface history (ports, names, identifiers, fingerprints) that identity resolution works from. |
+| **Fact log** | The taproom's append-only log of facts from all sensors. Devices and the dependency map are a fold of it. |
 | **Fingerprint** | A compact id for how a client's software behaves (DHCP option order, TCP SYN fields, TLS ClientHello). Identifies an OS or app version, not one device. |
 | **FrameContext** | What the shell knows about a frame that the frame cannot say: time, sensor, port, direction, stripped VLAN. |
 | **Hand-off** | Copying a packet into the observation ring so heavy work (decryption, fragment reassembly) runs in the background fold. |
@@ -21,8 +23,10 @@
 | **Observed edge** | A dependency confirmed by traffic between the two ends. |
 | **Ring** | The per-thread buffer of observations between the core and the background fold. |
 | **Routing domain** | The scope in which an IP address is unique (a VRF, or by default one sensor). |
+| **Sensor** | One running Tapster: an embedded library, an ERSPAN collector or a single-device capture. |
 | **Segment** | One layer-2 broadcast domain as Tapster sees it: sensor, port or ERSPAN session, and VLAN path. |
 | **Shell** | The consumer-specific code around the core: capture, decapsulation, context. |
 | **Slot** | A fixed buffer from a tap's pool that collects one message split over several TCP segments. |
 | **Tap** | In the embedded C API, the per-thread handle a forwarding thread calls `tapster_observe` on. |
+| **Taproom** | The central service that merges the facts of all sensors into devices and the dependency map. |
 | **View** | A `readonly ref struct` over the caller's bytes that reads one protocol layer. |

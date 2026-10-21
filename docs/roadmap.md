@@ -14,6 +14,9 @@ Identify devices from traffic, without sending anything, for all three consumers
 - **Recorded for v2:** the evidence log per interface, and dependency edges (configured and
   observed), starting with DHCP.
 - The three shells: embedded C API, ERSPAN collector, single device.
+- A taproom with the fact log and the fold: in the same process for the single-device shell
+  and a lone collector, remote for embedded sensors (see
+  [deployment and outputs](deployment-and-outputs.md)).
 
 ## v2: resolution and dependencies
 

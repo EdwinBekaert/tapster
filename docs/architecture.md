@@ -105,8 +105,9 @@ allocates. A tap is used by one thread at a time; a host with four forwarding th
 four taps. Because nothing on this path allocates, the NativeAOT garbage collector is never
 triggered by it.
 
-Open question: how the embedded host gets results out (a drain callback, a periodic export
-file, or a small local API). This does not affect the core.
+Results leave an embedded sensor as facts sent to the taproom, the central service that merges
+all sensors (see [deployment and outputs](deployment-and-outputs.md)). This does not affect the
+core.
 
 ### Forwarded traffic (ERSPAN collector)
 
@@ -149,6 +150,21 @@ the reassembled message is a span, so the same views read it. See
   events, not the rate of packets.
 - When a ring is full, the newest observations are dropped and a per-tap counter goes up.
   Losing an observation is acceptable; slowing the host's forwarding is not.
+
+## Who protects what
+
+Tapster runs inside someone else's software: a router's firmware, a collector service, a
+desktop tool. That wrapper owns the environment; Tapster owns its own behaviour.
+
+| The wrapper | Tapster |
+|---|---|
+| Isolation: whether Tapster runs in the forwarding process or beside it | Never throws on input: malformed, truncated and hostile frames are normal input, and no exception crosses the C boundary |
+| Securing the link between sensor and taproom, and the credentials for it | Bounded memory and bounded work per packet: fixed pools, depth limits, drop and count |
+| Who may read the outputs | A flow-table hash keyed with a random seed, so chosen five-tuples cannot slow it down |
+| Authorisation to monitor the network | Conflicting facts (two MACs claiming one IP) are kept and reported, never resolved silently |
+
+The right-hand column cannot be added from outside: only the parser knows where its loops and
+lengths are.
 
 ## Pure core, thin shells
 
