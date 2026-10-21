@@ -17,8 +17,6 @@ Identify devices from traffic, without sending anything, for all three consumers
 - A taproom with the fact log and the fold: in the same process for the single-device shell
   and a lone collector, remote for embedded sensors (see
   [deployment and outputs](deployment-and-outputs.md)).
-- Privacy defaults: retention, hostname reduction, pseudonymised exports (see
-  [privacy](privacy.md)).
 
 ## v2: resolution and dependencies
 

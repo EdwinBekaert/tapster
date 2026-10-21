@@ -53,12 +53,15 @@ into observations.
   starting with DHCP.
 - [Deployment and outputs](docs/deployment-and-outputs.md): sensors, the taproom that merges
   them, the fact log and what a user gets.
-- [Privacy](docs/privacy.md): what is stored and what never is, retention, erasure and the
-  deployer's part.
 - [Fingerprint sources](docs/fingerprint-sources.md): fingerprint methods and signature data,
   and their licenses.
-- [Threat model](docs/threat-model.md): what attacks a parser of strangers' packets, and how
-  Tapster holds up.
+- [Platforms](docs/platforms.md): operating systems, CPUs, capture libraries and building.
+- [Testing](docs/testing.md): unit tests, the capture corpus, fuzzing and benchmarks.
+- [Observability](docs/observability.md): the counters Tapster keeps about itself.
+- [A DHCP exchange, step by step](docs/walkthrough.md): one relayed exchange from frame to
+  dependency edges.
+- [Prior art](docs/prior-art.md): how Tapster relates to existing open-source tools.
+- [Decision records](docs/adr/README.md): the decisions behind this design, and why.
 - [Performance](docs/performance.md): targets, capture options and what happens under load.
 - [Roadmap](docs/roadmap.md): what comes first and what comes last.
 - [Glossary](docs/glossary.md): the words these documents use.
@@ -67,6 +70,13 @@ into observations.
 
 v1 identifies devices passively and records the evidence and edges that v2 needs; v2 resolves
 rotating MAC addresses and builds the dependency map; active probing comes last.
+
+## Data you collect
+
+Tapster records MAC and IP addresses, hostnames, fingerprints and who talks to whom. Run it only
+on infrastructure you own or are authorised to monitor, and check the rules that apply to you
+(data protection, monitoring of employees) before you do. Tapster collects; what you do with
+the data is your responsibility.
 
 ## License
 

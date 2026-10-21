@@ -30,8 +30,8 @@ to fit that, and should not stand in the way of a commercial license from the li
 | **IEEE OUI registry** | Vendor of a MAC address prefix | Published by the IEEE Registration Authority. Debian's packaging states the IEEE asserts no copyright on the public listing (**verify** with the IEEE) | Download at install or update time, not stored in the repository |
 | **Wireshark `manuf`** | The same, curated | GPL-2.0 | Not used: GPL data would not fit the license |
 | **p0f signature database** (`p0f.fp`) | TCP fingerprints → OS | The pre-v3 file carries an LGPL header; the v3 file's terms are unconfirmed (**verify** in the v3 source) | Not shipped. Optional import from a file the user provides |
-| **Fingerbank** | DHCP and other fingerprints → device | Commercial: a licensed database, or an API with a free tier (300 requests an hour at the time of writing) and paid tiers, with an API key | Optional integration on the taproom only, off by default, with the user's own key. Sends fingerprints only (see [privacy](privacy.md#exports)). Never on embedded sensors. |
-| **Tapster's own signatures** | Fingerprints → OS and device type | Built from labelled captures made for the project | The default. Contributions under the project's license |
+| **Fingerbank** | DHCP and other fingerprints → device | Commercial: a licensed database, or an API with a free tier (300 requests an hour at the time of writing) and paid tiers, with an API key | Optional integration on the taproom only, off by default, with the user's own key. Never on embedded sensors. |
+| **Tapster's own signatures** | Fingerprints → OS and device type | Built from labelled captures: public sample captures and captures recorded for the project | The default. Contributions under the project's license |
 
 ## Rules
 

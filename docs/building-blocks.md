@@ -86,8 +86,7 @@ readonly record struct FlowKey(IpAddress Low, IpAddress High, ushort LowPort, us
 - Canonical: the lower address and port come first, so both directions find the same entry.
 - `GetHashCode` mixes the packed fields with a fast multiply-and-shift hash, **keyed with a
   random seed chosen at start-up**. The five-tuples come from strangers; without the seed,
-  anyone could pick tuples that collide and make every lookup slow (see
-  [threat model](threat-model.md#exhausting-resources)).
+  anyone could pick tuples that collide and make every lookup slow.
 - `CollectionsMarshal.GetValueRefOrAddDefault` returns a `ref` to the value, so "find or add
   then update" is one lookup.
 - The table has a fixed capacity. When it is full, the timing wheel's oldest entries are

@@ -105,7 +105,8 @@ MAC, a device id from the first interface that formed it.
 ## Open questions
 
 - **Transport between sensor and taproom.** Requirements: authenticated both ways, encrypted,
-  batched, resumable from a batch number. See the [threat model](threat-model.md).
+  batched, resumable from a batch number. Securing it is the deployment's job (see
+  [architecture](architecture.md#who-protects-what)).
 - **Storage format of the fact log.** A simple length-prefixed file per day is enough to start;
   a database only when queries need it.
 - **Query interface** for the inventory and the map.

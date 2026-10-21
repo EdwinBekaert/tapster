@@ -151,6 +151,21 @@ the reassembled message is a span, so the same views read it. See
 - When a ring is full, the newest observations are dropped and a per-tap counter goes up.
   Losing an observation is acceptable; slowing the host's forwarding is not.
 
+## Who protects what
+
+Tapster runs inside someone else's software: a router's firmware, a collector service, a
+desktop tool. That wrapper owns the environment; Tapster owns its own behaviour.
+
+| The wrapper | Tapster |
+|---|---|
+| Isolation: whether Tapster runs in the forwarding process or beside it | Never throws on input: malformed, truncated and hostile frames are normal input, and no exception crosses the C boundary |
+| Securing the link between sensor and taproom, and the credentials for it | Bounded memory and bounded work per packet: fixed pools, depth limits, drop and count |
+| Who may read the outputs | A flow-table hash keyed with a random seed, so chosen five-tuples cannot slow it down |
+| Authorisation to monitor the network | Conflicting facts (two MACs claiming one IP) are kept and reported, never resolved silently |
+
+The right-hand column cannot be added from outside: only the parser knows where its loops and
+lengths are.
+
 ## Pure core, thin shells
 
 The core is plain C# with no I/O, no clock and no threads of its own. That makes it testable
