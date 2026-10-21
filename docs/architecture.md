@@ -105,8 +105,9 @@ allocates. A tap is used by one thread at a time; a host with four forwarding th
 four taps. Because nothing on this path allocates, the NativeAOT garbage collector is never
 triggered by it.
 
-Open question: how the embedded host gets results out (a drain callback, a periodic export
-file, or a small local API). This does not affect the core.
+Results leave an embedded sensor as facts sent to the taproom, the central service that merges
+all sensors (see [deployment and outputs](deployment-and-outputs.md)). This does not affect the
+core.
 
 ### Forwarded traffic (ERSPAN collector)
 

@@ -51,6 +51,14 @@ into observations.
   how rotating MAC addresses are resolved.
 - [Dependency map](docs/dependency-map.md): which edges are recorded from the first version,
   starting with DHCP.
+- [Deployment and outputs](docs/deployment-and-outputs.md): sensors, the taproom that merges
+  them, the fact log and what a user gets.
+- [Privacy](docs/privacy.md): what is stored and what never is, retention, erasure and the
+  deployer's part.
+- [Fingerprint sources](docs/fingerprint-sources.md): fingerprint methods and signature data,
+  and their licenses.
+- [Threat model](docs/threat-model.md): what attacks a parser of strangers' packets, and how
+  Tapster holds up.
 - [Performance](docs/performance.md): targets, capture options and what happens under load.
 - [Roadmap](docs/roadmap.md): what comes first and what comes last.
 - [Glossary](docs/glossary.md): the words these documents use.
